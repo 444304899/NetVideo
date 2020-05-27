@@ -3,12 +3,12 @@
     <h1 class="title">
       <strong>
         <span class="glyphicon glyphicon-stats" style="color: #2581BA;"></span>
-        <a href="/film/list01">欧美电影</a>
+        <router-link to="/film/list01">欧美电影</router-link>
       </strong>
-      <a class="more" href="/film/list01">更多&gt;&gt;</a>
+      <router-link to="/film/list01" class="more">更多&gt;&gt;</router-link>
     </h1>
     <article class="u-movie" v-for="item in 6" :key="item"> 
-      <a title="《沙漠骑兵》完整版在线观看&amp;下载" href="http://www.dililitv.com/gresource/7565">
+      <router-link :to="{path:`/tag/gresource/${item}`,query:{}}"  title="《沙漠骑兵》完整版在线观看&amp;下载">
         <div class="list-poster">
           <img
             data-original="https://pic.dlili.tv/upload/poster/278fc091b7f67e53.jpg"
@@ -24,12 +24,12 @@
           </div>
         </div>
         <h2>沙漠骑兵</h2>
-      </a>
+      </router-link>
       <div class="meta">
         <span class="tags">
-          <a href="http://www.dililitv.com/tag/maoxian" rel="tag">冒险</a>
-          <a href="http://www.dililitv.com/tag/juqing" rel="tag">剧情</a>
-          <a href="http://www.dililitv.com/tag/dongzuo" rel="tag">动作</a>
+          <router-link :to="{path:`/tag/${'maoxian'}`,params:{name:'冒险'}}" >冒险</router-link>
+          <router-link :to="{path:`/tag/${'jvqing'}`,query:{}}">剧情</router-link>
+          <router-link :to="{path:`/tag/${'dongzuo'}`,query:{}}">动作</router-link>
         </span>
       </div>
     </article>

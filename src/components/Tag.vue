@@ -3,12 +3,12 @@
     <div class="content-wrap">
       <div class="content">
         <div class="film-content">
-          <TagContent />
+          <TagContent :params='this.$route.params.name' />
         </div>
       </div>
     </div>
 
-    <aside class="sidebar">
+    <aside class="sidebar" @click="conso">
       <Aside></Aside>
     </aside>
   </div>
@@ -19,9 +19,15 @@ import TagContent from "./TagContent";
 import Aside from "./IndexAside";
 export default {
   data() {
-    return {};
+    return {
+      // params: $route.params.name
+    };
   },
-  methods: {},
+  methods: {
+    conso() {
+      console.log('this',this)
+    },
+  },
   components: {
     TagContent,
     Aside
@@ -67,5 +73,11 @@ export default {
   padding-top: 20px;
   margin-left: -380px;
   width: 360px;
+}
+
+.test {
+  width: 300px;
+  height: 300px;
+  background-color: #ccc;
 }
 </style>

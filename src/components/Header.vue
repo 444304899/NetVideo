@@ -67,10 +67,10 @@ export default {
           this.$router.push({ path: "/" });
           break;
         case "2":
-          this.$router.push({ path: "/film?url=" + keyPath[1] });
+          this.$router.push({ path: "/film?list=" + keyPath[1] });
           break;
         case "3":
-          this.$router.push({ path: "/film?url=" + keyPath[1] });
+          this.$router.push({ path: "/teleplay?list=" + keyPath[1] });
           break;
         default:
           console.log("默认");
@@ -82,7 +82,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .header {
   position: fixed;
   top: 0;

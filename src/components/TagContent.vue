@@ -1,7 +1,7 @@
 <template>
   <div class="list-content">
     <h3 class="title">
-      <strong>标签：奇幻</strong>
+      <strong>标签：{{params}}</strong>
     </h3>
     <div class="m-movies clearfix">
       <article class="u-movie" v-for="item in 16" :key="item">
@@ -24,8 +24,8 @@
         </a>
         <div class="meta">
           <span class="tags">
-            <a href="http://www.dililitv.com/tag/xiju" rel="tag">喜剧</a>
-            <a href="http://www.dililitv.com/tag/qihuan" rel="tag">奇幻</a>
+            <router-link :to="{path:`/tag/${'xijv'}`,query:{}}">喜剧</router-link>
+            <router-link :to="{path:`/tag/${'kehuan'}`,query:{}}">科幻</router-link>
           </span>
         </div>
       </article>
@@ -70,8 +70,12 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      activeIndex2: "1"
+      activeIndex2: "1",
+      // msg:'奇幻'
     };
+  },
+  props: {
+    params:''
   },
   methods: {
     handleSelect(key, keyPath) {
@@ -225,9 +229,9 @@ a.more {
   color: #666666;
 }
 .pagination {
-    padding: 20px 10px 1px 10px;
-    background-color: #fff;
-    text-align: center;
-    clear: both;
+  padding: 20px 10px 1px 10px;
+  background-color: #fff;
+  text-align: center;
+  clear: both;
 }
 </style>
