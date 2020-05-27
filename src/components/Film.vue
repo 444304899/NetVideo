@@ -9,7 +9,9 @@
         </div>
       </div>
     </div>
-
+    <!-- <div :hidden='isList'>
+    <router-view></router-view>
+    </div> -->
     <aside class="sidebar">
       <Aside></Aside>
     </aside>
@@ -23,7 +25,8 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      activeIndex2: "1"
+      activeIndex2: "1",
+      isList:this.$route.path=='/film'
     };
   },
   methods: {
@@ -34,6 +37,9 @@ export default {
   components: {
     FilmContent,
     Aside
+  },
+  created(){
+    console.log('this.$route.path',this.$route.path)
   }
 };
 </script>

@@ -1,11 +1,11 @@
 <template>
   <div class="list-content">
     <h3 class="title">
-      <strong>标签：{{params}}</strong>
+      <strong>标签：{{tag}}</strong>
     </h3>
     <div class="m-movies clearfix">
       <article class="u-movie" v-for="item in 16" :key="item">
-        <a title="《山海之机巧蒜泥》完整版在线观看&amp;下载" href="http://www.dililitv.com/gresource/7349">
+        <router-link :to="{path:`/gresource`,query:{vid:item}}"  title="《山海之机巧蒜泥》完整版在线观看&amp;下载">
           <div class="list-poster">
             <img
               data-original="https://pic.dlili.tv/upload/poster/463be0e80d8b7093.jpg"
@@ -21,43 +21,16 @@
             </div>
           </div>
           <h2>山海之机巧蒜泥</h2>
-        </a>
+        </router-link>
         <div class="meta">
           <span class="tags">
-            <router-link :to="{path:`/tag/${'xijv'}`,query:{}}">喜剧</router-link>
-            <router-link :to="{path:`/tag/${'kehuan'}`,query:{}}">科幻</router-link>
+            <router-link :to="{path:`/tag`,query:{tag:'喜剧'}}">喜剧</router-link>
+            <router-link :to="{path:`/tag`,query:{tag:'科幻'}}">科幻</router-link>
           </span>
         </div>
       </article>
       <div class="pagination pagination-multi">
-        <!-- <ul>
-          <li class="prev-page"></li>
-          <li class="active">
-            <span>1</span>
-          </li>
-          <li>
-            <a href="http://www.dililitv.com/tag/qihuan/page/2">2</a>
-          </li>
-          <li>
-            <a href="http://www.dililitv.com/tag/qihuan/page/3">3</a>
-          </li>
-          <li>
-            <a href="http://www.dililitv.com/tag/qihuan/page/4">4</a>
-          </li>
-          <li>
-            <span>...</span>
-          </li>
-          <li class="next-page">
-            <a href="http://www.dililitv.com/tag/qihuan/page/2">下一页</a>
-          </li>
-          <li>
-            <a href="http://www.dililitv.com/tag/qihuan/page/12">尾页</a>
-          </li>
-          <li>
-            <span>共 12 页</span>
-          </li>
-        </ul>-->
-        <el-pagination background layout="prev, pager, next" :total="1000"></el-pagination>
+        <!-- <el-pagination background layout="prev, pager, next" :total="1000"></el-pagination> -->
       </div>
     </div>
   </div>
@@ -71,12 +44,10 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-      // msg:'奇幻'
+      tag: this.$route.query.tag
     };
   },
-  props: {
-    params:''
-  },
+  props: {},
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
@@ -85,6 +56,15 @@ export default {
   components: {
     FilmContent,
     Aside
+  },
+  watch: {
+    $route(to, from) {
+      // console.log(to.query.tag);
+      //路由参数变化时 修改标题
+      this.tag = to.query.tag;
+      //路由参数变化时 重新请求list
+
+    }
   }
 };
 </script>

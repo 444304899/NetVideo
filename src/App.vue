@@ -1,7 +1,7 @@
 <template>
   <div id="app ui-navtop">
     <Header></Header>
-    <router-view />
+    <router-view  v-if="isRouterAlive" />
     <Footer></Footer>
   </div>
 </template>
@@ -10,15 +10,27 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 export default {
+  provide () {
+    return {
+      reload: this.reload
+    }
+  },
   data() {
     return {
       activeIndex: "1",
-      activeIndex2: "1"
+      activeIndex2: "1",
+      isRouterAlive: true
     };
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+    },
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
     }
   },
   components: {

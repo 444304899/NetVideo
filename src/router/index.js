@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Gresource from '@/components/Gresource'
 import Index from '@/components/Index'
 import Film from '@/components/Film'
+import FilmList from '@/components/FilmList'
 import Tag from '@/components/Tag'
 Vue.use(Router)
 
@@ -22,7 +23,19 @@ export default new Router({
     {
       path: '/film',
       name: 'Film',
-      component: Film
+      component: FilmList,
+      children: [
+        {
+          path: 'list2-1',
+          name: 'List2-1',
+          component: FilmList,
+        },
+        {
+          path: 'list2-2',
+          name: 'List2-1',
+          component: FilmList
+        }
+      ]
     },
     {
       path: '/tag',

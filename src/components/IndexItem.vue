@@ -1,7 +1,7 @@
 <template>
   <div class="posts_new_item">
     <article class="u-movie">
-      <a title="《沼泽的沉默》完整版在线观看&amp;下载" href="http://www.dililitv.com/gresource/7492">
+      <router-link :to="{path:`/gresource`,query:{}}" title="《沼泽的沉默》完整版在线观看&amp;下载">
         <el-row>
           <el-col :span="24">
             <el-card :body-style="{ padding: '0px' }">
@@ -16,7 +16,7 @@
             </el-card>
           </el-col>
         </el-row>
-      </a>
+      </router-link>
     </article>
   </div>
 </template>

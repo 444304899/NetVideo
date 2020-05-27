@@ -3,12 +3,12 @@
     <h1 class="title">
       <strong>
         <span class="glyphicon glyphicon-stats" style="color: #2581BA;"></span>
-        <router-link to="/film/list01">欧美电影</router-link>
+        <router-link :to="{path:`/film`,query:{list:'01'}}">{{title}}</router-link>
       </strong>
-      <router-link to="/film/list01" class="more">更多&gt;&gt;</router-link>
+      <router-link :to="{path:`/film`,query:{list:'01'}}" class="more">更多&gt;&gt;</router-link>
     </h1>
     <article class="u-movie" v-for="item in 6" :key="item"> 
-      <router-link :to="{path:`/tag/gresource/${item}`,query:{}}"  title="《沙漠骑兵》完整版在线观看&amp;下载">
+      <router-link :to="{path:`/gresource/${item}`,query:{}}"  title="《沙漠骑兵》完整版在线观看&amp;下载">
         <div class="list-poster">
           <img
             data-original="https://pic.dlili.tv/upload/poster/278fc091b7f67e53.jpg"
@@ -26,10 +26,8 @@
         <h2>沙漠骑兵</h2>
       </router-link>
       <div class="meta">
-        <span class="tags">
-          <router-link :to="{path:`/tag/${'maoxian'}`,params:{name:'冒险'}}" >冒险</router-link>
-          <router-link :to="{path:`/tag/${'jvqing'}`,query:{}}">剧情</router-link>
-          <router-link :to="{path:`/tag/${'dongzuo'}`,query:{}}">动作</router-link>
+        <span class="tags" v-for="item in taglist" :key="item">
+          <router-link :to="{path:`/tag`,query:{tag:item}}" >{{item}}</router-link>
         </span>
       </div>
     </article>
@@ -40,10 +38,21 @@
 export default {
   data() {
     return {
-      currentDate: new Date()
+      currentDate: new Date(),
+      taglist:['冒险','喜剧','爱情'],
     };
   },
-  methods: {}
+  methods: {},
+  props: {
+    title: {
+      type: String,
+      default: '欧美电影'
+    }
+  },
+  created(){
+    console.log('props.title',this.title)
+    // `/movie?name=${props.title}`
+  }
 };
 </script>
 

@@ -62,20 +62,26 @@ export default {
     // },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+      var enmu = {
+        '2-1':'欧美片',
+        '2-2':'华语片',
+        '2-3':'日韩片',
+        '3-1':'欧美剧',
+        '3-2':'华语剧',
+        '3-3':'日韩剧',
+      }
       switch (keyPath[0]) {
         case "1":
           this.$router.push({ path: "/" });
           break;
         case "2":
-          this.$router.push({ path: "/film?list=" + keyPath[1] });
+          this.$router.push({ path: "/film/list" + keyPath[1],query:{tag:`${enmu[keyPath[1]]}`} });
           break;
         case "3":
-          this.$router.push({ path: "/teleplay?list=" + keyPath[1] });
+          this.$router.push({ path: "/teleplay/list" + keyPath[1] });
           break;
         default:
           console.log("默认");
-      }
-      if (key == 2) {
       }
     }
   }

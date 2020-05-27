@@ -2,48 +2,41 @@
   <div class="container">
     <div class="content-wrap">
       <div class="content">
-        <div class="lun">
-          <Carousel></Carousel>
-        </div>
-        <div class="item clearfix">
-          <IndexList />
-        </div>
-        <div class="item clearfix" v-for="item in list" :key="item">
-          <IndexItem2 :title='item' />
+        <div class="film-content">
+          <TagContent />
         </div>
       </div>
     </div>
 
-    <aside class="sidebar">
+    <aside class="sidebar" @click="conso">
       <Aside></Aside>
     </aside>
   </div>
 </template>
-<script>
-import Carousel from "./Carousel";
-import IndexList from "./IndexList";
-import Aside from "./IndexAside";
-import IndexItem2 from "./IndexItem2";
 
+<script>
+import TagContent from "./TagContent";
+import Aside from "./IndexAside";
 export default {
-  name: "Index",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
-      list:['欧美电影','华语电影','A片']
+      // name: this.$route.path,
+      // params: this.$route.params
     };
   },
+  methods: {
+    conso() {
+      console.log('this',this)
+    },
+  },
   components: {
-    Carousel,
-    IndexList,
-    Aside,
-    IndexItem2
+    TagContent,
+    Aside
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .container {
   max-width: 1280px;
   /* background-color: #fff; */
@@ -81,5 +74,11 @@ export default {
   padding-top: 20px;
   margin-left: -380px;
   width: 360px;
+}
+
+.test {
+  width: 300px;
+  height: 300px;
+  background-color: #ccc;
 }
 </style>

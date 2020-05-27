@@ -114,10 +114,9 @@
     </article>
     <div class="article-tags">
       标签：
-      <a href="http://www.dililitv.com/tag/dongzuo" rel="tag" data-original-title title>动作</a>
-      <a href="http://www.dililitv.com/tag/donghua" rel="tag" data-original-title title>动画</a>
-      <a href="http://www.dililitv.com/tag/zainan" rel="tag" data-original-title title>灾难</a>
-      <a href="http://www.dililitv.com/tag/kehuan" rel="tag" data-original-title title>科幻</a>
+      <span v-for="item in taglist" :key="item">
+        <router-link :to="{path:`/tag`,query:{tag:item}}">{{item}}</router-link>
+      </span>
     </div>
     <div class="relate">
       <h3 class="title">
@@ -148,14 +147,18 @@
         <b>10</b>
       </strong>
     </h3>
+    <Comment></Comment>
   </div>
 </template>
 
 <script>
-// import IndexItem from "./IndexItem";
+import Comment from "./Comment";
 export default {
   data() {
-    return {};
+    return {
+      taglist: ["冒险", "喜剧", "爱情"],
+      textarea: ""
+    };
   },
   methods: {
     play(objInfo) {
@@ -164,7 +167,7 @@ export default {
     }
   },
   components: {
-    // IndexItem
+    Comment
   }
 };
 </script>
